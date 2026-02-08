@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "xssforge"
-version = "2.1.0"
-description = "Ultimate XSS scanner with 500+ payloads, smart filter detection, WAF bypass, and browser verification"
+version = "1.0.0"
+description = "A general-purpose XSS vulnerability scanner for security researchers and bug bounty hunters"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
