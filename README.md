@@ -262,6 +262,6 @@ https://github.com/ds-sec162/xssforge/issues
 
 ---
 
-**Author**: Dennis
+**Author**: ds-sec162
 **Version**: 1.0.0
 **Last Updated**: February 2026
